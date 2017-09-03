@@ -40,6 +40,8 @@ If you wish to contribute to development of NativeDoc, you must sign the [Contri
 
 The workflow is a typical git workflow, where contributors fork the [dagirard/NativeDoc](https://github.com/dagirard/NativeDoc) repository, make their changes on a branch, and then submit a pull request.
 
+**Note:** Before commit, you must run `"NativeDoc.res\Devel\NativeDocCleaner.rev"` in order to clean up development variables.
+
 # License
 
 NativeDoc is under the GPL 3.0 license.

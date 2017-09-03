@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+</head>
+
+<body>
+<h2>  Documentation block guidelines</h2>
+<br>
+<p>
+NativeDoc has been designed to be compliant with already existing documentation tools
+available for more "traditionnal" programming languages. (C/C++/Java/C#)<br>
+<br>
+The main documentation block standard followed is <a href="http://www.stack.nl/~dimitri/doxygen/">DoxyGen</a>,
+some aspects of JavaDoc are available too.<br>
+This means that all tutorial/lessons already written about DoxyGen are almost compliant with NativeDoc.<br>
+<br>
+By the way, <b>NativeDoc is not DoxyGen or JavaDoc</b>, and does not support some features of DoxyGen. (See the chapter "What NativeDoc does not do" at the end of this documentation.)<br>
+</p>
+<h3>Documentation block</h3>
+<br>
+<p>
+NativeDoc will understand all the following types of block as documentation to be extracted:<br>
+</p>
+<h4>DoxyGen Standard (Recommanded)</h4>
+<p>
+<font color="#68228B">
+/** \function myFunction(Param1, param2)<br>
+*<br>
+* \param Param1 First parameter<br>
+* \param Param2 Second parameter<br>
+*<br>
+* \return True of False.<br>
+*/<br>
+</font>
+</p>
+<h4>Other documentation block</h4>
+<p>
+<font color="#68228B">
+/*! \function myFunction(Param1, param2)<br>
+!<br>
+! \param Param1 First parameter<br>
+! \param Param2 Second parameter<br>
+!<br>
+! \return True of False.<br>
+*/<br>
+<br>
+/** \function myFunction(Param1, param2)<br>
+\param Param1 First parameter<br>
+\param Param2 Second parameter<br>
+\return True of False.<br>
+*/<br>
+<br>
+/// \function myFunction(Param1, param2)<br>
+///<br>
+/// \param Param1 First parameter<br>
+/// \param Param2 Second parameter<br>
+///<br>
+/// \return True of False.<br>
+///<br>
+<br>
+//! \function myFunction(Param1, param2)<br>
+//!<br>
+//! \param Param1 First parameter<br>
+//! \param Param2 Second parameter<br>
+//!<br>
+//! \return True of False.<br>
+//!<br>
+<br>
+</font>
+<b>Note:</b> NativeDoc will intepret only those documentation blocks. Any other block comment are ignored by NativeDoc.
+</p>
+<br>
+<h3>Documentation tags (commands)</h3>
+<br>
+<p>
+NativeDoc uses tags (also called commands) to identify parts of the documentation.<br>
+A tags is defined by starting with "\" (DoxyGen) or "@" (JavaDoc) and then with an identifier.<br>
+<br>
+<b>Examples:</b><br>
+<font color="#68228B">
+/** \function myFunction(Param1, param2)<br>
+* \brief Brief description of what the function does<br>
+* <br>
+* \param Param1 First parameter<br>
+* \param Param2 Second parameter<br>
+*<br>
+* \return True of False.<br>
+*/<br>
+<br>
+/** @function myFunction(Param1, param2)<br>
+* @brief Brief description of what the function does<br>
+* <br>
+* @param Param1 First parameter<br>
+* @param Param2 Second parameter<br>
+*<br>
+* @return True of False.<br>
+*/<br>
+</font>
+</p>
+<h3>Declaration of a documentation block</h3>
+<br>
+<p>
+<h4>Doxygen</h4>
+The DoxyGen standard insists that a documentation block should start with
+the declaration of the handler/variable that is to be documented.<br>
+<br>
+Examples:<br>
+<font color="#68228B">
+/** private command myCommand p_Param1, p_Param2, [p_OptionalParam3]<br>
+*/<br>
+<br>
+/** getProp myProperty<br>
+*/<br>
+<br>
+/** local myVariable<br>
+*/<br>
+<br>
+/** button myButton<br>
+*/<br>
+</font>
+<br>
+Nethertheless, to be strictly compliant to DoxyGen, you can also set the declaration like this (notice the backslashes):<br>
+<font color="#68228B">
+/** \private \command myCommand p_Param1, p_Param2, [p_OptionalParam3]<br>
+*/<br>
+<br>
+/** \getProp myProperty<br>
+*/<br>
+<br>
+/** \local myVariable<br>
+*/
+<br>
+/** \button myButton<br>
+*/<br>
+</font>
+<h4>JavaDoc</h4>
+NativeDoc supports JavaDoc, so the declaration of the handler can be ommited.<br>
+<br>
+<b>Example:</b><br>
+<font color="#68228B">
+/**<br>
+* \brief My function<br>
+*/<br>
+</font>
+<br>
+function myFunction p_Param1, p_Param2<br>
+...<br>
+end myFunction<br>
+<br>
+<h4>Which method to choose?</h4>
+Some programmer prefers the DoxyGen declaration, others the JavaDoc method.<br>
+<br>
+NativeDoc has been developped to respects the DoxyGen standard, and has been extended to
+support JavaDoc; generally we recommand that you use the DoxyGen style, because the parser is a bit faster with DoxyGen style blocks than
+JavaDoc style blocks.
+<br>
+</p>
+<h3>NativeDoc standard extension</h3>
+<br>
+<p>
+NativeDoc extends a bit DoxyGen/JavaDoc in the following ways:<br>
+- Multi-line tag descriptions.<br>
+- Optional parameters.<br>
+
+<h4>Multi-line tag descriptions</h4>
+The DoxyGen standard insists that multi-line parameters should be placed between { and }. (NativeDoc supports this).<br>
+<br>
+<b>Example:</b><br>
+<font color="#68228B">
+/** myFunction(p_Param1, p_Param2)<br>
+* \brief Cool function.<br>
+*<br>
+* \param p_Param1 <font color="red"><b>{</b></font> This parameters is a standard multiline parameters<br>
+*                  as you can see, it is placed on multiple<br>
+*                  lines in order to enhance lisibility. <font color="red"><b>}</b></font><br>
+* \param p_Param2 Second parameter.<br>
+*<br>
+*/<br>
+</font>
+<br>
+NativeDoc extends the multi-line feature to be more Revolution like, because
+a script can be placed on multiple line with "\" at the end of the line ("_" is used in Visual Basic).
+This can be used inside documentation blocks too.<br>
+<b>Note:</b> Like Revolution does, \ does not add a line return! This is the main difference between { } and \. \ should be used only to wrap long lines.<br>
+<br>
+<b>Example:</b><br>
+<font color="#68228B">
+/** myFunction(p_Param1, p_Param2)<br>
+* \brief Cool function.<br>
+*<br>
+* \param p_Param1 This parameters is a multiline parameters \<br>
+*                 as you can see, it is placed on multiple  _<br>
+*                 lines in order to enhance lisibility.<br>
+* \param p_Param2 Second parameter.<br>
+*<br>
+*/<br>
+</font>
+<h4>Optional parameters</h4>
+NativeDoc also supports the optional parameters concept, because parameters can be optional in Revolution.<br>
+Simply surround a parameter’s name with "[]" to displays it as optional.<br>
+<br>
+<b>Example:</b><br>
+<font color="#68228B">
+/** myFunction(p_Param1, [p_Optional_Param2])<br>
+* \brief Cool function.<br>
+*<br>
+* \param p_Param1 This parameters must be set.<br>
+* \param [p_Optional_Param2] Second optional parameter.<br>
+*<br>
+*/<br>
+</font>
+</p>
+<h3>What NativeDoc does not do</h3>
+<br>
+<p>
+NativeDoc is not DoxyGen or JavaDoc; the following features are not supported by NativeDoc:<br>
+<br>
+<b>- Documentation after the declaration.</b><br>
+local myVariable <font color="#68228B">/** Local Variable (DOES NOT WORK) */<br>
+</font>
+<br>
+<b>- Multiple block documentation.</b><br>
+<font color="#68228B">
+/// function myFunction<br>
+/// \brief My Function<br>
+<br>
+/// return True or False (DOES NOT WORK!)<br>
+</font>
+<br>
+To makes this block valid, you must not break the block.<br>
+<br>
+<font color="#68228B">
+/// function myFunction<br>
+/// \brief My Function<br>
+/// < ---- Notice here, the block is not broken.<br>
+/// return True or False (DOES NOT WORK!)<br>
+</font>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+Any proprietary names mentioned within this documentation are and shall remain vested in their respective owner(s).
+
+</p>
+
+</body>
+</html>
+
+
+
+
+
+

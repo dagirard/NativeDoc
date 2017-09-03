@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+</head>
+
+<body>
+<h2>  Complete example</h2>
+<br>
+<p>
+Here is the documentation block of the command that exports NativeDoc documentation to HTML.<br>
+<br>
+<font color="#68228B">
+/** command dpnd_Export_HTML p_NativeDocArray, p_Folder, p_TemplatePath, p_CProp, p_CustomPages, p_iFrame, p_CallBack, p_MenuHideHandlers<br>
+*<br>
+* \brief Generates the HTML documentation from the extracted array p_ExtractArray.<br>
+*<br>
+* \param  p_NativeDocArray  Array that contains the documentation to generate. See dpnd_ExtractStack for more informations.<br>
+* \param  p_Folder        Folder path where to generate the documentation.<br>
+* \param  p_TemplatePath  Folder path where the NativeDoc HTML Template is located.<br>
+* \param [p_CProp]        Array containing custom properties.<br>
+* \param [p_CustomPages]  Array containing user defined HTML pages.<br>
+* \param [p_iFrame]       Set to true to generate a website using iFrame. (WARNING: Use alongside a Frame template!)<br>
+* \param [p_CallBack]     The long id of the object to call back. (To display the progress)<br>
+* \param [p_MenuHideHandlers] Set to true to not display handlers inside the menu tree.<br>
+*<br>
+* \error "array"  p_NativeDocArray is not an array.<br>
+* \error "write"  The files cannot be written.<br>
+* \error "template" The template cannot be found or is corrupted.<br>
+*<br>
+* \WARNING If there is any files that already exists in the folder, they will be overwritten!<br>
+*<br>
+* To customize the generated documentation, for example to add multiples stacks into one documentation _<br>
+* simply customize the array p_ExtractArray.<br>
+* Example: You want to have the documentation of the stack "myLibrary" and the other stack "myOtherLibrary",<br>
+* this is really easy:&lt;code&gt;<br>
+* put dpnd_ExtractStack("myLibrary") into t_NativeDoc<br>
+* put dpnd_ExtractStack("myOtherLibrary") into t_Temp<br>
+* union t_NativeDoc with t_Temp<br>
+* dpnd_Export_GenHTML t_NativeDoc, "C:/Temp/Documentation"...&lt;/code&gt;<br>
+*<br>
+* - To display documentation under a special node:<br>
+* External libraries are located under the ["external"] node.<br>
+* Libraries are located under the ["library"] node.<br>
+*<br>
+* &lt;b&gt;Properties:&lt;/b&gt;<br>
+* To generate a correct documentation, the p_NativeDocArray array must contains those fields set:&lt;code&gt;<br>
+* - p_NativeDocArray["project"] -> eg. DPConfig<br>
+* - p_NativeDocArray["company"] -> eg. NativeSoft<br>
+* - p_NativeDocArray["copyright"] -> eg. (c) 2008-2010 NativeSoft. All rights reserved worldwide.<br>
+* - p_NativeDocArray["author"]  -> eg. Damien Girard&lt;/code&gt;<br>
+*<br>
+* &lt;b&gt;Custom properties:&lt;/b&gt;<br>
+* Since NativeDoc 3.0, it is possible to set custom properties inside the tree.<br>
+* Thoses properties will be replaced inside the templates.<br>
+* eg. Replace the text $PROJECT_CODE with "ID 2000" inside the templates files.<br>
+*<br>
+* Format of the array:&lt;code&gt;<br>
+* - p_CProp[&lt;id&gt;]["variable"] -- Text to replace inside the template.<br>
+* - p_CProp[&lt;id&gt;]["value"]    -- Value to set.<br>
+* &lt;/code&gt;<br>
+*<br>
+* &lt;b&gt;Custom pages:&lt;/b&gt;<br>
+* NativeDoc 3.0 can add user defined pages inside the documentation.<br>
+* In prior version, it was possible to have only three custom pages (p_MainPage, p_Readme, p_About)<br>
+* <br>
+* Now you can create as many page as you want.<br>
+*<br>
+* Format of the array:&lt;code&gt;<br>
+* - p_CustomPages[&lt;id or "main"&gt;] -- Array defining a custom page. Set to "main" to set the mainpage content.<br>
+* - p_CustomPages[&lt;id&gt;]["title"] -- Title of the page. (eg. "About" or "Readme")<br>
+* - p_CustomPages[&lt;id&gt;]["html"]  -- HTML content of the page.<br>
+* &lt;/code&gt;<br>
+*<br>
+* &lt;b&gt;Callback:&lt;/b&gt;<br>
+* The callback command called is the following:<br>
+* &lt;code&gt;on dpnd_Export_HTML_Callback p_PercentProgress&lt;/code&gt;<br>
+*<br>
+* p_PercentProgress is the progress in percent. (0-100)<br>
+*<br>
+* A little wait time with message is done in order to let the UI to be redrawn.<br>
+*<br>
+* &lt;b&gt;iFrame website:&lt;/b&gt;<br>
+* If you set p_iFrame to true, then the website generated will be using an iFrame for the content.<br>
+* The menu will be stored inside the main index.htm file, and all other files will not include the menu.<br>
+*<br>
+* An iFrame template &lt;b&gt;must have the file Template_iFrame.htm&lt;/b&gt; in the root folder ! This file will be used to generate MainPage/About Page etc...<br>
+* <br>
+* Note: you &lt;b&gt;must use&lt;/b&gt; a &lt;b&gt;frame template&lt;/b&gt;. Otherwise, unexpected results can occurs.<br>
+*<br>
+* \version 3.0 The handler has been updated in version 3.0, you must update your applications.<br>
+*<br>
+* \return The list of all errors met by the engine.<br>
+*<br>
+* \package Documentation generation<br>
+*<br>
+* \seealso dpnd_ExtractStack()<br>
+*/<br>
+</font>
+<br>
+command dpnd_Export_HTML p_NativeDocArray, p_Folder, p_TemplatePath, p_CProp, p_CustomPages, p_iFrame, p_CallBack, p_MenuHideHandlers<br>
+...<br>
+end dpnd_Export_HTML<br>
+<br>
+And here is the generated documentation: <a href="${HELP}API/Documents/stack_rev_nativedoc_substack_rev_NativeDoc_Library_command_dpnd_Export_HTML.htm">Command dpnd_Export_HTML</a>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+Any proprietary names mentioned within this documentation are and shall remain vested in their respective owner(s).
+
+</p>
+
+</body>
+</html>
+
+
+
+
+
+

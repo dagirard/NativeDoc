@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+</head>
+
+<body>
+<h2>  Supported Tags (Commands)</h2>
+<br>
+<p>
+NativeDoc does not support all Doxygen/JavaDoc tags; the following tags are supported:<br>
+<h3>Revolution Specific Tags</h3>
+<br>
+<p>
+<b>\function</b>&#9;Function declaration.<br>
+<b>\command</b> &#9;Command declaration.<br>
+<b>\on</b>      &#9;On handler declaration. (Considered as event)<br>
+<b>\getprop</b> &#9;Getprop handler.<br>
+<b>\setprop</b> &#9;Setprop handler.<br>
+<b>\private</b> &#9;Private function/commands.<br>
+<b>\global</b>  &#9;Global variable.<br>
+<b>\local</b>   &#9;Local variable.<br>
+<b>\constant</b>&#9;Constant.<br>
+<br>
+<b>\error</b> &lt;Error_Code&gt; &lt;Description&gt;&#9;Error that does not throw an error message. (Eg. \error "myErrCode1" If the parameter pMyParam is not set).<br>
+<br>
+<b>\alias</b> &lt;handlers&gt;&#9;Another handlers whose name is an alias of this one. (eg. \alias myFn1, myFunction1, myUnbelievableFunction)<br>
+<br>
+<b>\package</b> &#9;Place the handler inside a package. See <a>Packages</a><br>
+<b>\group</b>   &#9;Alias of \package.<br>
+</p>
+<h3>Supported DoxyGen Tags</h3>
+<br>
+<p>
+<b>\fn</b>            &#9;Function. (Same than \function)<br>
+<br>
+<b>\file</b>          &#9;Mark the documentation block to be for the object. (Eg. \file stack "myStack").<br>
+<b>\object</b>        &#9;Mark the documentation block to be for the object. (Eg. \object button "myButton").<br>
+<br>
+<b>\brief</b>         &#9;Brief description of the function.<br>
+<b>\short</b>         &#9;Synonymous of \brief.<br>
+<br>
+<b>\param</b>         &#9;Parameter.<br>
+<b>\param[in]</b>     &#9;Read only variable.  (Pointer)<br>
+<b>\param[out]</b>    Write only variable. (Pointer)<br>
+<b>\param[in,out]</b> Read/Write variable. (Pointer)<br>
+<br>
+<b>\return</b>        &#9;Result returned by the function/command.<br>
+<br>
+<b>\note</b>          &#9;Note<br>
+<br>
+<b>\warning</b>       &#9;Warning.<br>
+<br>
+<b>\throw</b> &lt;Error_Code&gt; &lt;Description&gt; &#9;Error that throws an error message. (Eg. \throw "MyErrCode1" If the parameter pMyParam is not set).<br>
+<br>
+<b>\seealso</b>       &#9;Reference to another handler inside the documentation. (Eg. \seealso stack "Library", function myFunction, global myGlobal)<br>
+<b>\see</b>           &#9;Alias of seealso.<br>
+<br>
+<b>\bug</b>           &#9;Information about a bug.<br>
+<br>
+<b>\todo</b>          &#9;Things to do.<br>
+<br>
+<b>\author</b>        &#9;Author<br>
+<b>\date</b>          &#9;A date.<br>
+<b>\test</b>          &#9;Test description.<br>
+<br>
+<b>\version</b>       &#9;Version.<br>
+<br>
+<b>\private</b>       &#9;Mark the handler as private and to be excluded from the documentation exportation if the setting "Exclude private" is set.<br>
+</p>
+<h3>The Param tag (command)</h3>
+<br>
+<p>
+The param tag is one of the most important, because you document here what the handler is expecting as a parameter.<br>
+NativeDoc will check also the validity and the existence of parameters when generating the documentation.<br>
+
+<h4>Standard parameters</h4>
+Example:<br>
+<font color="#68228B">
+/** myFunction(p_Param1, [p_Optional_Param2])<br>
+* \brief Cool function.<br>
+*<br>
+* \param p_Param1 This parameters must be set.<br>
+* \param [p_Optional_Param2] Second optional parameter.<br>
+*<br>
+*/<br>
+</font>
+
+<h4>References (aka. Pointers)</h4>
+NativeDoc supports references parameters.<br>
+Example:<br>
+<font color="#68228B">
+/** function myFunction p_Param1, @p_ReadOnly, @p_WriteOnly, @p_ReadWrite<br>
+* \brief Cool function.<br>
+*<br>
+* \param       p_Param1    Simple parameter.<br>
+* \param[in]  @p_ReadOnly  Reference to a variable that will just be read.<br>
+* \param[out] @p_WriteOnly Reference to a variable that will just be written.<br>
+* \param[in,out] @p_ReadWrite Reference to a variable that will read and written.<br>
+*<br>
+*/<br>
+</font>
+function myFunction p_Param1, @p_ReadOnly, @p_WriteOnly, @p_ReadWrite<br>
+...<br>
+end myFunction<br>
+</p>
+<h3>The SeeAlso/See tag (command)</h3>
+<br>
+<p>
+The SeeAlso tag is useful to suggest to a person that is learning the API of your application that they should also look at those handlers/variables/stack...<br>
+<br>
+Format: \seealso &lt;list of handler to see separated by commas&gt;<br>
+<br>
+Example:<br>
+<font color="#68228B">
+/** function myFunction p_Param1<br>
+* \brief Cool function.<br>
+*<br>
+* \param      p_Param1    Simple parameter.<br>
+*<br>
+* \seealso function myFunction, command myCommand, setProp myProperty, getProp myProperty, global myGlobal, local myLocal, stack myStack, card myCard<br>
+*/<br>
+</font>
+<br>
+<b>Tip:</b> In a seealso tag, function myFunction and myFunction() are equivalent; command myCommand and myCommand too. If the engine sees (), it understands that it has to search for a function, otherwise, it will search for a command.
+<br>
+</p>
+<h3>Packages</h3>
+<br>
+<p>
+Introduced in NativeDoc 1.5, packages enables to categorize handlers and to group them.<br>
+This enables users of your libraries to find quicker the function that they need.<br>
+<br>
+To "package" an handler, simply use the tags "\package" with the name of the package.<br>
+Format: \package &lt;Full name of the package&gt;<br>
+<br>
+Example:<br>
+<font color="#68228B">
+/** function DoAddition p_FirstNumber, p_SecondNumber<br>
+* \brief Addition p_FirstNumber with p_SecondNumber, and return the sum.<br>
+*<br>
+* \param      p_FirstNumber    The first number to addition.<br>
+* \param      p_SecondNumber   The second number to addition.<br>
+*<br>
+* \package Math functions<br>
+*/<br>
+</font>
+<br>
+All handlers that have the same package name will be grouped.<br>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+Any proprietary names mentioned within this documentation are and shall remain vested in their respective owner(s).
+
+</p>
+
+</body>
+</html>
+
+
+
+
+
+

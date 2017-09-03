@@ -1,0 +1,3 @@
+NativeSoft NativeDoc Minimalist template.
+No JavaScript and no navigation tree.
+(c) 2007-2010 NativeSoft. All rights reserved worldwide.

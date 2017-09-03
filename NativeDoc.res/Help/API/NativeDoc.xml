@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NativeSoft NativeDoc 1.0 XML Documentation file. -->
+<dpnd>
+  <info>
+    <ver>1.0</ver>
+  </info>
+  <date/>
+  <copyright>(c) 2007-2012 Damien Girard.</copyright>
+  <author>Damien Girard</author>
+  <project>NativeDoc 3.0</project>
+  <company>NativeSoft</company>
+  <stack_rev_NativeDoc_Library><file><name>"rev_NativeDoc_Library"</name><type>file</type><begin>209</begin><tags><description></description><brief_0>Library stack that contains the NativeDoc Engine.</brief_0></tags></file><name>rev_NativeDoc_Library</name><type>stack</type><package_681119911710910111011697116105111110321011201161149799116105111110><type>package</type><name>Documentation extraction</name><command_dpnd_ArrayExclude><type>command</type><isVariable>false</isVariable><begin>1571</begin><tags><description></description><param_0>in @p_Array
+Array to analyze.</param_0><seealso_0>function_dpnd_Extract</seealso_0><brief_0>Excludes a kind of handlers from the NativeDoc array p_Array.</brief_0><param_1>none p_ExcludePrivate
+Set to true to exclude privates command/functions.</param_1><param_2>none p_ExcludeEvents
+Set to true to exclude all events. (ON commands, eg. on mouseup or on myCommand)</param_2><param_3>none p_ExcludeGetProp
+Set to true to exclude all GetProp/SetProp.</param_3></tags><end>1607</end><line>1558</line><name>dpnd_ArrayExclude</name><private>false</private><parameters>@p_Array,p_ExcludePrivate,p_ExcludeEvents,p_ExcludeGetProp</parameters><name_full>command dpnd_ArrayExclude @p_Array, p_ExcludePrivate, p_ExcludeEvents, p_ExcludeGetProp</name_full></command_dpnd_ArrayExclude><function_dpnd_Extract><type>function</type><isVariable>false</isVariable><begin>277</begin><tags><description>This command parse the script of the object p_Object, and extract the entire documentation. The result is a multi-dimensionnal array that contains all things extracted.&lt;br /&gt;
+&lt;br /&gt;
+Note: Parsing errors are stored inside the key &amp;quot;error&amp;quot; of the result. [&amp;quot;error&amp;quot;]&lt;br /&gt;
+&lt;div class="code"&gt;&lt;code&gt;Format of the multi-dimensionnal array:&lt;br /&gt;
+- t_Result[&amp;quot;md5&amp;quot;]                        -- MD5 sum of the script. (if [p_IncludeScriptMD5Sum] is true). The format of the md5 string is the PHP ones.&lt;br /&gt;
+- t_Result[&amp;quot;&amp;lt;type&amp;gt;_&amp;lt;name&amp;gt;&amp;quot;]&lt;br /&gt;
+- t_Result[&amp;quot;&amp;lt;type&amp;gt;_&amp;lt;name&amp;gt;&amp;quot;][&amp;quot;type&amp;quot;]      -- Type of the handler.&lt;br /&gt;
+- t_Result[&amp;quot;&amp;lt;type&amp;gt;_&amp;lt;name&amp;gt;&amp;quot;][&amp;quot;name&amp;quot;]      -- Name of the handler.&lt;br /&gt;
+- t_Result[&amp;quot;&amp;lt;type&amp;gt;_&amp;lt;name&amp;gt;&amp;quot;][&amp;quot;name_full&amp;quot;] -- Complete type, name and parameters of the handler. (Eg. &amp;quot;private function myFunction p_Param1, p_Param2&amp;quot;)&lt;br /&gt;
+- t_Result[&amp;quot;&amp;lt;type&amp;gt;_&amp;lt;name&amp;gt;&amp;quot;][&amp;quot;private&amp;quot;]   -- Private handler?&lt;br /&gt;
+- t_Result[&amp;quot;&amp;lt;type&amp;gt;_&amp;lt;name&amp;gt;&amp;quot;][&amp;quot;isVariable&amp;quot;]-- Is a variable?&lt;br /&gt;
+- t_Result[&amp;quot;&amp;lt;type&amp;gt;_&amp;lt;name&amp;gt;&amp;quot;][&amp;quot;begin&amp;quot;]     -- Begins of the handler declaration.&lt;br /&gt;
+- t_Result[&amp;quot;&amp;lt;type&amp;gt;_&amp;lt;name&amp;gt;&amp;quot;][&amp;quot;end&amp;quot;]       -- Ends of the declaration. (Undefined for variables).&lt;br /&gt;
+&lt;br /&gt;
+- t_Result[&amp;quot;&amp;lt;type&amp;gt;_&amp;lt;name&amp;gt;&amp;quot;][&amp;quot;tags&amp;quot;]      -- All keys under &amp;quot;tags&amp;quot; are documentation tags defined.&lt;br /&gt;
+- t_Result[&amp;quot;&amp;lt;type&amp;gt;_&amp;lt;name&amp;gt;&amp;quot;][&amp;quot;tags&amp;quot;][&amp;quot;description&amp;quot;] -- Description tag. Contains all lines not tagged.&lt;br /&gt;
+&lt;br /&gt;
+- t_Result[&amp;quot;error&amp;quot;]                      -- All parsing errors/warnings are stored here.&lt;/code&gt;&lt;/div&gt;</description><return_0>Multi-dimmensionnal array that contains all extracted documentation.</return_0><brief_0>Extract all documentations stored inside the object p_Object.</brief_0><param_0>none p_Object
+Object script to analyze.</param_0><error_0>&amp;quot;exists&amp;quot;
+The object p_Object does not exists.</error_0><note_0>This function will not work at all if NativeDoc is not licensed.</note_0><param_1>none [p_IncludeNotDocumented]
+Set to true if you do want to include functions/commands that are not documented.</param_1><error_1>&amp;quot;reading&amp;quot;
+The script of the object cannot be read. (Password locked?)</error_1><note_1>If the license of NativeDoc is &amp;quot;Starter Kit&amp;quot;, then only 3 handlers will be returned.</note_1><param_2>none [p_IncludeScriptMD5Sum]
+Set to true to include the MD5Sum of the script in the result array.</param_2><error_2>&amp;quot;license&amp;quot;
+The function cannot be used because of License restriction.</error_2></tags><end>863</end><line>237</line><name>dpnd_Extract</name><private>false</private><parameters>p_Object,p_IncludeNotDocumented,p_IncludeScriptMD5Sum</parameters><name_full>function dpnd_Extract p_Object, [p_IncludeNotDocumented], [p_IncludeScriptMD5Sum]</name_full></function_dpnd_Extract><function_dpnd_ExtractStack><type>function</type><isVariable>false</isVariable><begin>1149</begin><tags><description>This command parse scripts of all substack/card/objects of the stack p_MainStack and extract the entire documentation. The result is a multi-dimensionnal array that contains all things extracted. This multi-dimmensionnal array can be used after to generate an output.&lt;br /&gt;
+&lt;br /&gt;
+&lt;div class="code"&gt;&lt;code&gt;Format of the multi-dimensionnal array:&lt;br /&gt;
+- t_Result[&amp;lt;mainStack&amp;gt;] --&amp;gt; Functions/Commands/Properties extracted by the function dpnd_Extract.&lt;br /&gt;
+- t_Result[&amp;lt;mainStack&amp;gt;][&amp;lt;card&amp;gt;_&amp;lt;id&amp;gt;][&amp;lt;button&amp;gt;_&amp;lt;id&amp;gt;] --&amp;gt; Functions/Commands/Properties extracted by the function dpnd_Extract.&lt;br /&gt;
+- t_Result[&amp;lt;mainStack&amp;gt;][&amp;lt;subStack&amp;gt;][&amp;lt;card&amp;gt;_&amp;lt;id&amp;gt;][&amp;lt;button&amp;gt;_&amp;lt;id&amp;gt;] --&amp;gt; Functions/Commands/Properties extracted by the function dpnd_Extract.&lt;br /&gt;
+- Note: t_Result[&amp;lt;mainStack&amp;gt;][&amp;lt;subStack&amp;gt;][&amp;lt;card&amp;gt;_&amp;lt;id&amp;gt;][&amp;lt;button&amp;gt;_&amp;lt;id&amp;gt;][&amp;quot;name&amp;quot;] --&amp;gt; Short name of the object.&lt;br /&gt;
+- Note: t_Result[&amp;lt;mainStack&amp;gt;][&amp;lt;subStack&amp;gt;][&amp;lt;card&amp;gt;_&amp;lt;id&amp;gt;][&amp;lt;button&amp;gt;_&amp;lt;id&amp;gt;][&amp;quot;type&amp;quot;] --&amp;gt; Type of the object.&lt;br /&gt;
+&lt;br /&gt;
+With a package:&lt;br /&gt;
+- t_Result[&amp;lt;mainStack&amp;gt;][&amp;lt;subStack&amp;gt;][&amp;lt;card&amp;gt;_&amp;lt;id&amp;gt;][&amp;lt;button&amp;gt;_&amp;lt;id&amp;gt;][&amp;lt;package&amp;gt;_&amp;lt;id&amp;gt;] --&amp;gt; Functions/Commands/Properties located inside of a package extracted by the function dpnd_Extract.&lt;br /&gt;
+- t_Result[&amp;lt;mainStack&amp;gt;][&amp;lt;subStack&amp;gt;][&amp;lt;card&amp;gt;_&amp;lt;id&amp;gt;][&amp;lt;button&amp;gt;_&amp;lt;id&amp;gt;][&amp;lt;package&amp;gt;_&amp;lt;id&amp;gt;][&amp;quot;name&amp;quot;] --&amp;gt; Name of the package.&lt;br /&gt;
+- t_Result[&amp;lt;mainStack&amp;gt;][&amp;lt;subStack&amp;gt;][&amp;lt;card&amp;gt;_&amp;lt;id&amp;gt;][&amp;lt;button&amp;gt;_&amp;lt;id&amp;gt;][&amp;lt;package&amp;gt;_&amp;lt;id&amp;gt;][&amp;quot;type&amp;quot;] --&amp;gt; Set to &amp;quot;package&amp;quot;&lt;br /&gt;
+&lt;br /&gt;
+Note: Is it dpnd_extract that places automatically handlers under the [&amp;lt;package&amp;gt;_&amp;lt;id&amp;gt;] node.&lt;br /&gt;
+&lt;br /&gt;
+As you see, the multi-dimensionnal array is optimized for the output generation.&lt;br /&gt;
+With this organization, the hierarchy is preserved.&lt;/code&gt;&lt;/div&gt;</description><version_0>2.5 New multidimensionnal array. Childrens are stored under the &amp;quot;c&amp;quot; key.</version_0><return_0>Multi-dimensionnal array that will contains the entire documentation for the MainStack.</return_0><brief_0>Extract the entire documentation of the main stack p_Stack, including its substacks/cards/objects.</brief_0><param_0>none p_MainStack
+MainStack to extract.</param_0><error_0>&amp;quot;exists&amp;quot;
+The stack p_MainStack do not exists.</error_0><seealso_0>function_dpnd_Extract</seealso_0><note_0>If p_DontDiscardEmptyObjects is true, then for elements that would have been deleted the node &amp;quot;empty&amp;quot; will be set to &amp;quot;true&amp;quot;.</note_0><param_1>none p_ExclusionList
+Objects to not scan. One by line.</param_1><error_1>&amp;quot;mainstack&amp;quot;
+p_MainStack is not a Mainstack.</error_1><param_2>none [p_IncludeNotDocumented]
+Set to true to include not documented handler.</param_2><param_3>none [p_IncludeScriptMD5Sum]
+Set to true to include the MD5Sum of the script in the result array.</param_3><param_4>none [p_DontDiscardEmptyObjects]
+Set to true to tell NativeDoc to not delete from the result array empty objects. (Useful to keep md5 sums)</param_4></tags><end>1185</end><line>1105</line><name>dpnd_ExtractStack</name><private>false</private><parameters>p_MainStack,p_ExclusionList,p_IncludeNotDocumented,p_IncludeScriptMD5Sum,p_DontDiscardEmptyObjects</parameters><name_full>function dpnd_ExtractStack p_MainStack, p_ExclusionList, [p_IncludeNotDocumented], [p_IncludeScriptMD5Sum], [p_DontDiscardEmptyObjects]</name_full></function_dpnd_ExtractStack><function_dpndp_GetHandlerBlock><type>function</type><isVariable>false</isVariable><begin>1092</begin><tags><description></description><param_0>in @p_Script
+Pointer to the variable that contains the analized script.</param_0><return_0>The line where the end of the handler is located in p_Script.</return_0><brief_0>Find quickly the end of a handler.</brief_0><param_1>none p_Handler
+Handler to search.</param_1><param_2>none p_StartLine
+Line where start the search. In order to prevent any problems, set this lines to the first line of the handler in p_Script.</param_2></tags><end>1103</end><line>1080</line><name>dpndp_GetHandlerBlock</name><private>false</private><parameters>@p_Script,p_Handler,p_StartLine</parameters><name_full>function dpndp_GetHandlerBlock @p_Script, p_Handler, p_StartLine</name_full></function_dpndp_GetHandlerBlock></package_681119911710910111011697116105111110321011201161149799116105111110><package_6811199117109101110116971161051111103210310111010111497116105111110><name>Documentation generation</name><type>package</type><command_dpnd_Export_HTML><type>command</type><isVariable>false</isVariable><begin>1728</begin><tags><description>To customize the generated documentation, for example to add multiples stacks into one documentation simply customize the array p_ExtractArray.&lt;br /&gt;
+Example: You want to have the documentation of the stack &amp;quot;myLibrary&amp;quot; and the other stack &amp;quot;myOtherLibrary&amp;quot;,&lt;br /&gt;
+this is really easy:&lt;br /&gt;
+&lt;div class="code"&gt;&lt;code&gt;put dpnd_ExtractStack(&amp;quot;myLibrary&amp;quot;) into t_NativeDoc&lt;br /&gt;
+put dpnd_ExtractStack(&amp;quot;myOtherLibrary&amp;quot;) into t_Temp&lt;br /&gt;
+union t_NativeDoc with t_Temp&lt;br /&gt;
+dpnd_Export_GenHTML t_NativeDoc, &amp;quot;C:/Temp/Documentation&amp;quot;...&lt;/code&gt;&lt;/div&gt;&lt;br /&gt;
+- To display documentation under a special node:&lt;br /&gt;
+External libraries are located under the [&amp;quot;external&amp;quot;] node.&lt;br /&gt;
+Libraries are located under the [&amp;quot;library&amp;quot;] node.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Properties:&lt;/b&gt;&lt;br /&gt;
+To generate a correct documentation, the p_NativeDocArray array must contains those fields set:&lt;br /&gt;
+&lt;div class="code"&gt;&lt;code&gt;- p_NativeDocArray[&amp;quot;project&amp;quot;] -&amp;gt; eg. DPConfig&lt;br /&gt;
+- p_NativeDocArray[&amp;quot;company&amp;quot;] -&amp;gt; eg. NativeSoft&lt;br /&gt;
+- p_NativeDocArray[&amp;quot;copyright&amp;quot;] -&amp;gt; eg. (c) 2008-2010 NativeSoft. All rights reserved worldwide.&lt;br /&gt;
+- p_NativeDocArray[&amp;quot;author&amp;quot;]  -&amp;gt; eg. Damien Girard&lt;/code&gt;&lt;/div&gt;&lt;br /&gt;
+&lt;b&gt;Custom properties:&lt;/b&gt;&lt;br /&gt;
+Since NativeDoc 3.0, it is possible to set custom properties inside the tree.&lt;br /&gt;
+Thoses properties will be replaced inside the templates.&lt;br /&gt;
+eg. Replace the text $PROJECT_CODE with &amp;quot;ID 2000&amp;quot; inside the templates files.&lt;br /&gt;
+&lt;br /&gt;
+Format of the array:&lt;br /&gt;
+&lt;div class="code"&gt;&lt;code&gt;- p_CProp[&amp;lt;id&amp;gt;][&amp;quot;variable&amp;quot;] -- Text to replace inside the template.&lt;br /&gt;
+- p_CProp[&amp;lt;id&amp;gt;][&amp;quot;value&amp;quot;]    -- Value to set.&lt;/code&gt;&lt;/div&gt;&lt;br /&gt;
+&lt;b&gt;Custom pages:&lt;/b&gt;&lt;br /&gt;
+NativeDoc 3.0 can add user defined pages inside the documentation.&lt;br /&gt;
+In prior version, it was possible to have only three custom pages (p_MainPage, p_Readme, p_About)&lt;br /&gt;
+&lt;br /&gt;
+Now you can create as many page as you want.&lt;br /&gt;
+&lt;br /&gt;
+Format of the array:&lt;br /&gt;
+&lt;div class="code"&gt;&lt;code&gt;- p_CustomPages[&amp;lt;id or &amp;quot;main&amp;quot;&amp;gt;] -- Array defining a custom page. Set to &amp;quot;main&amp;quot; to set the mainpage content.&lt;br /&gt;
+- p_CustomPages[&amp;lt;id&amp;gt;][&amp;quot;title&amp;quot;] -- Title of the page. (eg. &amp;quot;About&amp;quot; or &amp;quot;Readme&amp;quot;)&lt;br /&gt;
+- p_CustomPages[&amp;lt;id&amp;gt;][&amp;quot;html&amp;quot;]  -- HTML content of the page.&lt;/code&gt;&lt;/div&gt;&lt;br /&gt;
+&lt;b&gt;Callback:&lt;/b&gt;&lt;br /&gt;
+The callback command called is the following:&lt;br /&gt;
+&lt;div class="code"&gt;&lt;code&gt;on dpnd_Export_HTML_Callback p_PercentProgress&lt;/code&gt;&lt;/div&gt;&lt;br /&gt;
+p_PercentProgress is the progress in percent. (0-100)&lt;br /&gt;
+&lt;br /&gt;
+A little wait time with message is done in order to let the UI to be redrawn.&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;iFrame website:&lt;/b&gt;&lt;br /&gt;
+If you set p_iFrame to true, then the website generated will be using an iFrame for the content.&lt;br /&gt;
+The menu will be stored inside the main index.htm file, and all other files will not include the menu.&lt;br /&gt;
+&lt;br /&gt;
+An iFrame template &lt;b&gt;must have the file Template_iFrame.htm&lt;/b&gt; in the root folder ! This file will be used to generate MainPage/About Page etc...&lt;br /&gt;
+&lt;br /&gt;
+Note: you &lt;b&gt;must use&lt;/b&gt; a &lt;b&gt;frame template&lt;/b&gt;. Otherwise, unexpected results can occurs.</description><version_0>3.0 The handler has been updated in version 3.0, you must update your applications.</version_0><WARNING_0>If there is any files that already exists in the folder, they will be overwritten!</WARNING_0><return_0>The list of all errors met by the engine.</return_0><brief_0>Generates the HTML documentation from the extracted array p_ExtractArray.</brief_0><param_0>none p_NativeDocArray
+Array that contains the documentation to generate. See dpnd_ExtractStack for more informations.</param_0><error_0>&amp;quot;array&amp;quot;
+p_NativeDocArray is not an array.</error_0><seealso_0>function_dpnd_ExtractStack</seealso_0><param_1>none p_Folder
+Folder path where to generate the documentation.</param_1><error_1>&amp;quot;write&amp;quot;
+The files cannot be written.</error_1><param_2>none p_TemplatePath
+Folder path where the NativeDoc HTML Template is located.</param_2><error_2>&amp;quot;template&amp;quot;
+The template cannot be found or is corrupted.</error_2><param_3>none [p_CProp]
+Array containing custom properties.</param_3><param_4>none [p_CustomPages]
+Array containing user defined HTML pages.</param_4><param_5>none [p_iFrame]
+Set to true to generate a website using iFrame. (WARNING: Use alongside a Frame template!)</param_5><param_6>none [p_CallBack]
+The long id of the object to call back. (To display the progress)</param_6><param_7>none [p_MenuHideHandlers]
+Set to true to not display handlers inside the menu tree.</param_7></tags><end>2087</end><line>1639</line><name>dpnd_Export_HTML</name><private>false</private><parameters>p_NativeDocArray,p_Folder,p_TemplatePath,p_CProp,p_CustomPages,p_iFrame,p_CallBack,p_MenuHideHandlers</parameters><name_full>command dpnd_Export_HTML p_NativeDocArray, p_Folder, p_TemplatePath, [p_CProp], [p_CustomPages], [p_iFrame], [p_CallBack], [p_MenuHideHandlers]</name_full></command_dpnd_Export_HTML><command_dpnd_Export_XML><type>command</type><isVariable>false</isVariable><begin>1338</begin><tags><description>Properties will be stored inside the node &amp;quot;/dpnd/file/properties&amp;quot; in the XML file.&lt;br /&gt;
+You can put any properties inside the array pProperties, but the important ones for NativeDoc are the followings:&lt;br /&gt;
+&lt;div class="code"&gt;&lt;code&gt;- p_Properties[&amp;quot;Project&amp;quot;]&lt;br /&gt;
+- p_Properties[&amp;quot;Author&amp;quot;]&lt;br /&gt;
+- p_Properties[&amp;quot;Company&amp;quot;]&lt;br /&gt;
+- p_Properties[&amp;quot;Copyright&amp;quot;]&lt;/code&gt;&lt;/div&gt;</description><version_0>3.0 New p_Properties parameters. Properties are now placed inside the &amp;quot;/dpnd/properties&amp;quot; node, and not anymore at the roots.</version_0><brief_0>Export the documentation p_ExtractStackArray to the file p_Path.</brief_0><param_0>none p_ExtractStackArray
+An array generated by the dpnd_ExtractStack command.</param_0><error_0>&amp;quot;array&amp;quot;
+p_ExtractStackArray is not an array.</error_0><seealso_0>function_dpnd_Import_XML</seealso_0><param_1>none p_Path
+Destination file path.</param_1><error_1>&amp;quot;exists&amp;quot;
+There is already a file p_Path that exists.</error_1><param_2>none [p_Properties]
+An array with properties to be copied inside the xml file.</param_2><error_2>&amp;quot;write&amp;quot;
+The file cannot be written.</error_2></tags><end>1384</end><line>1312</line><name>dpnd_Export_XML</name><private>false</private><parameters>p_ExtractStackArray,p_Path,p_Properties</parameters><name_full>command dpnd_Export_XML p_ExtractStackArray, p_Path, [p_Properties]</name_full></command_dpnd_Export_XML></package_6811199117109101110116971161051111103210310111010111497116105111110><package_6811199117109101110116971161051111103210510911211111411697116105111110><name>Documentation importation</name><type>package</type><command_dpnd_AddExternalDocumentation><type>command</type><isVariable>false</isVariable><begin>3807</begin><tags><description>&lt;b&gt;How to add your plugins documentation to NativeDoc?&lt;/b&gt;&lt;br /&gt;
+Use simply the following script:&lt;br /&gt;
+&lt;div class="code"&gt;&lt;code&gt;if &amp;quot;rev_NativeDoc_Library&amp;quot; is among the lines of the stacksInUse then&lt;br /&gt;
+dpnd_AddExternalDocumentation &amp;lt;Documentation XML File&amp;gt;&lt;br /&gt;
+else&lt;br /&gt;
+global g_dpnd_AddExternalDocumentation&lt;br /&gt;
+put &amp;lt;Documentation XML File&amp;gt; &amp;amp; cr into dpnd_AddExternalDocumentation&lt;br /&gt;
+end if&lt;/code&gt;&lt;/div&gt;&lt;br /&gt;
+If NativeDoc is started, then you add the documentation directly inside NativeDoc.&lt;br /&gt;
+If NativeDoc is not started, you place into the global dpnd_AddExternalDocumentation the&lt;br /&gt;
+file that NativeDoc will load at the startup.</description><param_0>none p_File
+External NativeDoc documentation file to add.</param_0><brief_0>Add the external documentation to the Dictionary Navigator.</brief_0><return_0>Empty if success, otherwise an error code with the message.</return_0><param_1>none [p_DontUpdateNavigator]
+Set to true to not update the NativeDoc Navigator.</param_1></tags><end>3823</end><line>3807</line><name>dpnd_AddExternalDocumentation</name><private>false</private><parameters>p_File,p_DontUpdateNavigator</parameters><name_full>command dpnd_AddExternalDocumentation p_File, [p_DontUpdateNavigator]</name_full></command_dpnd_AddExternalDocumentation><function_dpnd_Import_XML><type>function</type><isVariable>false</isVariable><begin>1403</begin><tags><description></description><param_0>none p_Path
+Path of the XML to import.</param_0><error_0>&amp;quot;exists&amp;quot;
+The file p_Path does not exists or is not readable.</error_0><seealso_0>command_dpnd_Export_XML,command_dpnd_Export_HTML</seealso_0><version_0>3.0 Support of properties stored inside the &amp;quot;/dpnd/properties&amp;quot; node.</version_0><return_0>An NativeDoc array that can be used to generate a documentation.</return_0><brief_0>Convert an external XML file to an extracted documentation array that can be used to generate a documentation.</brief_0><error_1>&amp;quot;version&amp;quot;
+The file p_Path is not designed for this version of NativeDoc.</error_1></tags><end>1481</end><line>1386</line><name>dpnd_Import_XML</name><private>false</private><parameters>p_Path</parameters><name_full>function dpnd_Import_XML p_Path</name_full></function_dpnd_Import_XML></package_6811199117109101110116971161051111103210510911211111411697116105111110><package_7284777632789711810510397116111114327110111010111497116105111110><name>HTML Navigator Generation</name><type>package</type><function_dpnd_Navigator_HTML><type>function</type><isVariable>false</isVariable><begin>2997</begin><tags><description></description><param_0>in @p_NativeDocArray
+Array that contains the documentation to generate. See dpnd_ExtractStack for more informations.</param_0><version_0>2.0</version_0><return_0>The html content of the node p_Node placed in the template p_HTMLTemplate.</return_0><brief_0>Returns the html content of the node p_Node of the NativeDoc array p_NativeDocArray.</brief_0><param_1>in @p_ArrayMap
+List that contains all keys of the array p_NativeDocArray.</param_1><param_2>none p_Node
+Node to get the HTML content.</param_2><param_3>none p_HTMLTemplate
+HTML Template to use.</param_3></tags><end>3022</end><line>2983</line><name>dpnd_Navigator_HTML</name><private>false</private><parameters>@p_NativeDocArray,@p_ArrayMap,p_Node,p_HTMLTemplate</parameters><name_full>function dpnd_Navigator_HTML @p_NativeDocArray, @p_ArrayMap, p_Node, p_HTMLTemplate</name_full></function_dpnd_Navigator_HTML></package_7284777632789711810510397116111114327110111010111497116105111110><package_72847776328410110911210897116101321099711097103101109101110116><name>HTML Template management</name><type>package</type><function_dpnd_TemplateList><type>function</type><isVariable>false</isVariable><begin>3542</begin><tags><description>There is two locations available for templates:&lt;br /&gt;
+- &amp;lt;NativeDoc path&amp;gt;/Templates/&lt;br /&gt;
+- &amp;lt;User path&amp;gt;/</description><param_0>none [p_OnlyTemplateName]
+Set to true to have only a list of all available templates.</param_0><warning_0>A template cannot have a &amp;quot;,&amp;quot; inside its name!</warning_0><return_0>The list of all templates available. One by line. If &amp;lt;p_OnlyTemplateName&amp;gt; is not set to true, the result look like: &amp;lt;template name&amp;gt;,&amp;lt;template path&amp;gt; Note: The path of template stored inside the NativeDoc folder is named: ${NATIVEDOC_PATH} </return_0><brief_0>Returns the list of available template.</brief_0></tags><end>3592</end><line>3522</line><name>dpnd_TemplateList</name><private>false</private><parameters>p_OnlyTemplateName</parameters><name_full>function dpnd_TemplateList [p_OnlyTemplateName]</name_full></function_dpnd_TemplateList><function_dpnd_TemplatePath><type>function</type><isVariable>false</isVariable><begin>3507</begin><tags><description>Useful to replace ${NATIVEDOC_PATH} generated by dpnd_TemplateList.</description><param_0>none p_UserPath
+Set to true if you want to retrieve the user template path instead of the NativeDoc default template path.</param_0><seealso_0>function_dpnd_TemplateList</seealso_0><brief_0>Returns the location of NativeDoc templates stored inside the NativeDoc Plugins path.</brief_0></tags><end>3520</end><line>3495</line><name>dpnd_TemplatePath</name><private>false</private><parameters>p_UserPath</parameters><name_full>function dpnd_TemplatePath p_UserPath</name_full></function_dpnd_TemplatePath></package_72847776328410110911210897116101321099711097103101109101110116><package_7897116105118101681119932651141149712132779711097103101109101110116><name>NativeDoc Array Management</name><type>package</type><function_dpnd_ArrayMap><type>function</type><isVariable>false</isVariable><begin>1531</begin><tags><description>Returns the hierachical map of the array @p_Array.&lt;br /&gt;
+The result is sorted hierarchicaly and is sorted. This means that you&lt;br /&gt;
+can use this function convert directly an array to an XML file.</description><param_0>in @pArray
+Array to analyze.</param_0><note_0>Rewritten In NativeDoc 2.0, 8x times faster.</note_0><return_0>A list with the map of the array. One line by key. The result have one key by line. Eg: [&amp;quot;node1&amp;quot;][&amp;quot;value1&amp;quot;] [&amp;quot;node1&amp;quot;][&amp;quot;value2&amp;quot;] [&amp;quot;node1&amp;quot;][&amp;quot;node2&amp;quot;]  [&amp;quot;node1&amp;quot;][&amp;quot;node2&amp;quot;][&amp;quot;value1&amp;quot;]</return_0><brief_0>Returns the hierarchical map of the array @p_Array.</brief_0><param_1>none [pKey]
+Root node of the array to analyze. Format: '[&amp;quot;node1&amp;quot;][&amp;quot;node2&amp;quot;]'</param_1><note_1>Optimized in NativeDoc 2.5, 2x faster.</note_1></tags><end>1538</end><line>1506</line><name>dpnd_ArrayMap</name><private>false</private><parameters>@pArray,pKey</parameters><name_full>function dpnd_ArrayMap @pArray, [pKey]</name_full></function_dpnd_ArrayMap></package_7897116105118101681119932651141149712132779711097103101109101110116><package_8399114105112116329911110910910111011632114101109111118101114><name>Script comment remover</name><type>package</type><command_dpnd_CompileStack><type>command</type><isVariable>false</isVariable><begin>3619</begin><tags><description>The &amp;quot;compilation process&amp;quot; will remove all comments from all scripts of the mainstack p_Mainstack.&lt;br /&gt;
+This makes your application smaller.</description><param_0>none p_MainStack
+MainStack to compile.</param_0><error_0>&amp;quot;exists&amp;quot;
+The stack p_MainStack do not exists.</error_0><seealso_0>function_dpnd_comment_remove</seealso_0><warning_0>&lt;b&gt;CALL ONLY THIS COMMAND INSIDE THE &amp;quot;savingStandalone&amp;quot; HANDLERS.&lt;span color="red"&gt;Because this command will DESTROY all your comments!&lt;/span&gt;&lt;/b&gt;</warning_0><brief_0>Compile the stack p_Mainstack, including its substacks/cards/objects.</brief_0><param_1>none p_NoConfirmationDialog
+Set to &amp;quot;iknowwhatidoletmedothat&amp;quot; in order to remove the confirmation dialog.</param_1><error_1>&amp;quot;mainstack&amp;quot;
+p_MainStack is not a Mainstack.</error_1></tags><end>3654</end><line>3600</line><name>dpnd_CompileStack</name><private>false</private><parameters>p_MainStack,p_NoConfirmationDialog</parameters><name_full>command dpnd_CompileStack p_MainStack, p_NoConfirmationDialog</name_full></command_dpnd_CompileStack><function_dpnd_Comment_Remove><type>function</type><isVariable>false</isVariable><begin>3726</begin><tags><description></description><param_0>none p_Script
+Script to clean up.</param_0><note_0>This function removes also the entire indentation and empty lines.</note_0><return_0>The script p_Script without any comments.</return_0><brief_0>Returns the script p_Script without all comments. Useful to have smaller stacks.</brief_0></tags><end>3781</end><line>3714</line><name>dpnd_Comment_Remove</name><private>false</private><parameters>p_Script</parameters><name_full>function dpnd_Comment_Remove p_Script</name_full></function_dpnd_Comment_Remove></package_8399114105112116329911110910910111011632114101109111118101114><package_85116105108105116105101115><name>Utilities</name><type>package</type><function_dpnd_getMainStackList><type>function</type><isVariable>false</isVariable><begin>3842</begin><tags><description>Based on the user preference &amp;quot;LiveCode elements UI in lists&amp;quot;</description><version_0>3.0</version_0><brief_0>Returns the list of all loaded mainstacks.</brief_0><return_0>The list of all loaded mainstacks.</return_0></tags><end>3860</end><line>3842</line><name>dpnd_getMainStackList</name><private>false</private><parameters></parameters><name_full>function dpnd_getMainStackList </name_full></function_dpnd_getMainStackList><function_dpnd_getObjectList><type>function</type><isVariable>false</isVariable><begin>3879</begin><tags><description></description><param_0>none pMainStack
+Mainstack to analyze. (the long name (eg. &amp;quot;stack myStack&amp;quot;))</param_0><error_0>exists
+pMainStack does not exists.</error_0><seealso_0>function_dpnd_ExtractStack</seealso_0><version_0>3.0</version_0><brief_0>Returns all objects contained in the mainstack pMainStack.</brief_0><return_0>An array similar to the function dpnd_ExtractStack(), but without handlers.</return_0><error_1>mainstack
+pMainStack is not a mainstack.</error_1></tags><end>3898</end><line>3879</line><name>dpnd_getObjectList</name><private>false</private><parameters>pMainStack</parameters><name_full>function dpnd_getObjectList pMainStack</name_full></function_dpnd_getObjectList></package_85116105108105116105101115><constant_k_MemberText><line>213</line><name>k_MemberText</name><isVariable>true</isVariable><type>constant</type><begin>216</begin><tags><description></description><brief_0>Constant that contains the text of the &amp;quot;Members&amp;quot; block.</brief_0></tags><name_full>constant k_MemberText </name_full></constant_k_MemberText><constant_k_PackageText><line>218</line><name>k_PackageText</name><isVariable>true</isVariable><type>constant</type><begin>221</begin><tags><description></description><brief_0>Constant that contains the text of the handler contained in &amp;quot;Packages&amp;quot;</brief_0></tags><name_full>constant k_PackageText </name_full></constant_k_PackageText><function_dpnd_GetObjectName><type>function</type><isVariable>false</isVariable><begin>3354</begin><tags><description></description><param_0>none pObject
+Object name to analyze.</param_0><error_0>&amp;quot;exists&amp;quot;
+The object does not exists. (Set &amp;lt;pNotGetLongID&amp;gt; to true to not read the long id of the object).</error_0><seealso_0>function_dpnd_GetObjectShortName</seealso_0><brief_0>Returns a formatted id for an object.</brief_0><return_0>The desired id of the object.</return_0><param_1>none [pParameter]
+Set in this parameter the wanted result, use &amp;quot;+&amp;quot; as separator (Set this parameters to empty returns the object ID and the stack name (&amp;quot;object+card+stack&amp;quot;)). Example: &amp;quot;card&amp;quot;, &amp;quot;stack&amp;quot;, &amp;quot;card+stack&amp;quot;, &amp;quot;object+card+stack&amp;quot;, &amp;quot;object+stack&amp;quot;</param_1><param_2>none [pNotGetLongID]
+Set this parameters to true and this function will not read the long id of the object. (The object can not exists)</param_2><param_3>none [pUseSingleQuote]
+Use simple quote instead of double quote. Useful for Arrays.</param_3></tags><end>3421</end><line>3354</line><name>dpnd_GetObjectName</name><private>false</private><parameters>pObject,pParameter,pNotGetLongID,pUseSingleQuote,pGetName</parameters><name_full>function dpnd_GetObjectName pObject, [pParameter], [pNotGetLongID], [pUseSingleQuote], pGetName</name_full></function_dpnd_GetObjectName><function_dpnd_GetObjectShortName><type>function</type><isVariable>false</isVariable><begin>3433</begin><tags><description>Returns the object in format: &amp;lt;type&amp;gt; &amp;quot;&amp;lt;name&amp;gt;&amp;quot; of card &amp;quot;&amp;lt;name of card&amp;gt;&amp;quot; of stack &amp;quot;&amp;lt;name of stack&amp;gt;&amp;quot;</description><param_0>none pObject
+Objects to gets the short name of.</param_0><seealso_0>function_dpnd_GetObjectName</seealso_0><return_0>The object name in format: &amp;lt;type&amp;gt; &amp;quot;&amp;lt;name&amp;gt;&amp;quot; of card &amp;quot;&amp;lt;name of card&amp;gt;&amp;quot; of stack &amp;quot;&amp;lt;name of stack&amp;gt;&amp;quot;</return_0></tags><end>3493</end><line>3423</line><name>dpnd_GetObjectShortName</name><private>false</private><parameters>pObject</parameters><name_full>function dpnd_GetObjectShortName pObject</name_full></function_dpnd_GetObjectShortName><function_dpnd_ver><type>function</type><isVariable>false</isVariable><begin>232</begin><tags><description></description><param_0>none [p_Short]
+If set to true, only the major version is returned. (eg. 1.0 instead of 1.0.0.0)</param_0><return_0>Version of NativeDoc.</return_0><brief_0>Returns the version of NativeDoc.</brief_0></tags><end>235</end><line>224</line><name>dpnd_ver</name><private>false</private><parameters>p_Short</parameters><name_full>function dpnd_ver [p_Short]</name_full></function_dpnd_ver></stack_rev_NativeDoc_Library>
+  <properties><date>4:57 PM 9/19/12</date><copyright>(c) 2007-2012 Damien Girard.</copyright><author>Damien Girard</author><project>NativeDoc 3.0</project><company>NativeSoft</company></properties>
+</dpnd>

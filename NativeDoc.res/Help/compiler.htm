@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+</head>
+
+<body>
+<h2>  NativeDoc Script Comments Cleaner</h2>
+<br>
+<p>
+NativeDoc has a "Script Comments Cleaner". Its goal is to reduce the size of your stacks by removing all comments from them.<br>
+</p>
+<h3>Usage:</h3>
+<br>
+<p>
+The main function of the "script comments cleaner" is dpnd_comment_remove(p_Script). This function simply returns the script p_Script without any comments, and indentation. (Useful to compare two versions of the same source code).<br>
+<br>
+The main <font color="red"><b>DANGEROUS</b></font> command of the "script comment cleaner" is "dpnd_CompileStack p_MainStack, p_NoConfirmationDialog".<br>
+<br>
+This command simply "compiles/removes all comments" from the script of each objects/cards/substacks of stack mainstack p_MainStack. This is why it is dangerous, because a bad call to this command can destroy all your comments!<br>
+<br>
+This is why there is a confirmation dialog by default, to prevent any bad calls to that command.
+</p>
+<br>
+<h3>Implementation</h3>
+<br>
+<p>
+If you are using "SavingStandalone" to build your application, simply place dpnd_CompileStack inside it.<br>
+<br>
+<b>Example:</b><br>
+<pre>
+on savingStandalone
+  dpnd_CompileStack "myMainstack"
+end savingStandalone
+</pre>
+<br>
+If you are using your own "builder", simply call dpnd_CompileStack with the name of your mainstack to "compile" source scripts.<br>
+<br>
+<b><font color="red">WARNING: dpnd_CompileStack DESTROYS ALL YOUR COMMENTS! YOU MUST KNOW WHAT YOU ARE DOING BEFORE USING IT.</font></b>
+</p>
+<br>
+<h3>Removing the confirmation dialog</h3>
+<br>
+<p>
+If you are really sure of what you are doing, you can remove the confirmation dialog, by setting the parameter &lt;p_NoConfirmationDialog&gt; to "iknowwhatidoletmedothat"<br>
+<br>
+<b>Example:</b><br>
+<pre>
+on savingStandalone
+  -- No confirmation dialog.
+  dpnd_CompileStack "myMainstack", "iknowwhatidoletmedothat"
+end savingStandalone
+</pre>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+Any proprietary names mentioned within this documentation are and shall remain vested in their respective owner(s).
+
+</p>
+
+</body>
+</html>
+
+
+
+
+
+
