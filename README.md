@@ -16,7 +16,8 @@ You can locate the user extensions folder by doing so:
 1. Open LiveCode preferences
 2. In the Files & Memory preferences pane you can find the full path to the User Extensions folder. 
 3. Open this folder in your system file browser.
-4. Extract NativeDoc to this folder
+4. If it doesn't exists, create a "Plugins" subfolder.
+5. Extract NativeDoc into the "Plugins" subfolder.
 
 **Make sure that "rev_NativeDoc_Launcher.rev" file is at the root of the extension folder, LiveCode will automatically execute this file that will load NativeDoc.**
 
