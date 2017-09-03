@@ -12,14 +12,15 @@ Review, search and navigate through your documentation with NativeDoc.
 
 Download the repository, and extract it to your LiveCode extension folder.
 
-You can locate the user extensions folder by doing so:
+You can locate the user plugins folder by doing so:
 1. Open LiveCode preferences
 2. In the Files & Memory preferences pane you can find the full path to the User Extensions folder. 
 3. Open this folder in your system file browser.
-4. If it doesn't exists, create a "Plugins" subfolder.
-5. Extract NativeDoc into the "Plugins" subfolder.
+4. If it doesn't exists, create a **"Plugins"** subfolder.
+5. Extract NativeDoc into the **"Plugins"** subfolder.
+6. Start LiveCode and the NativeGeometry plugin window will be displayed.
 
-**Make sure that "rev_NativeDoc_Launcher.rev" file is at the root of the extension folder, LiveCode will automatically execute this file that will load NativeDoc.**
+**Make sure that "rev_NativeDoc_Launcher.rev" file is at the root of the Plugins folder, LiveCode will automatically execute this file that will load NativeDoc.**
 
 # Documentation
 
