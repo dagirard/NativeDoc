@@ -34,10 +34,6 @@ Before a push request can be made, you will have to perform manual tests with Na
 
 # How to contribute?
 
-If you wish to contribute to development of NativeDoc, you must sign the [Contributor's Agreement](http://www.nativesoft.net/oss/contribute).  This agreement is required because the NativeDoc project is dual-licensed both under the GPLv3 and a commercial (closed-source) license; you need to give Damien Girard permission to use your submissions in this way.
-
-**Note:** Any pull-requests from individuals who have not signed this agreement will be refused.
-
 The workflow is a typical git workflow, where contributors fork the [dagirard/NativeDoc](https://github.com/dagirard/NativeDoc) repository, make their changes on a branch, and then submit a pull request.
 
 **Note:** Before commit, you must run `"NativeDoc.res\Devel\NativeDocCleaner.rev"` in order to clean up development variables.
