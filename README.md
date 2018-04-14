@@ -44,10 +44,7 @@ The workflow is a typical git workflow, where contributors fork the [dagirard/Na
 
 # License
 
-NativeDoc is under the GPL 3.0 license.
-A complete copy is available in the file COPYING.TXT
-
-If you wish to develop a commercial application using NativeDoc,
-please contact sales@nativesoft.net for an enquiry.
+NativeDoc is under the LGPL 3.0 license.
+A complete copy is available in the file COPYING.TXT, COPYING.LESSER.TXT
 
 NativeSoft, DataTree, NativeDoc, NativeGeometry, the NativeSoft logo, the DataTree logo, the NativeGeometry logo, the NativeDoc logo, NativeSpeak, are registered trademarks of Damien André Edouard Girard, registered in France and other countries.
